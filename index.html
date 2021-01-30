@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main id="booking-information" class="main-content container">
+
+        <div class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book./p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                        <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <p>First Class ($150)</p>
+                    <input id="ticketvalue" type="text" class="form-control text-center" value="0">
+                    <button class="btn btn-default"><i id="itemincrease" class="fas fa-plus btn-design"></i></button>
+                    <button class="btn btn-default"><i id="itemdecrease" class="fas fa-minus btn-design"></i></button>
+
+
+                </div>
+            </div>
+
+            <div class="input-group f-class">
+                <div>
+                    <p>Economy ($100)</p>
+                    <input id="inputvalue" type="text" class="form-control text-center" value="0">
+                    <button class="btn btn-default"><i id="ticketincrease"
+                            class="fas fa-plus btn-design"></i></button>
+                    <button class="btn btn-default"><i id="ticketdecrease"
+                            class="fas fa-minus btn-design"></i></button>
+                </div>
+
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="total">$00</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat">$00</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="grand-total">$00</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style" id="handlingBookNow">Book Now</button>
+        </div>
+    </main>
+
+    <!-- for bonus -->
+    <div id="new-Area">
+            <div class="innertext">
+                <h1 style="text-align: center;">SUCCESS!!!</h1>
+             
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="total-cast">$00</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat-review">$00</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="total-review">$00</p>
+                    </div>
+                </div>
+                <br>
+                <p>Thank You for Booking Cruise Queen.Good Luck!</p>
+        
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+    <!--Thank You-->
+    <script>
+
+        // for bonus part 
+        document.getElementById("handlingBookNow").addEventListener("click", function () {
+            const bookingform = document.getElementById("booking-information");
+            bookingform.style.display = "none";
+            const newarea = document.getElementById("new-Area");
+            totalReview();
+            newarea.style.display = "block";
+
+        })
+
+        // firstclass booking part
+        document.getElementById("itemincrease").addEventListener("click", function () {
+            ticketChange(true)
+        });
+
+        document.getElementById("itemdecrease").addEventListener("click", function () {
+            ticketChange(false)
+        });
+        // normal booking part
+        document.getElementById("ticketincrease").addEventListener("click", function () {
+            valueChange(true)
+        });
+
+        document.getElementById("ticketdecrease").addEventListener("click", function () {
+            valueChange(false)
+        });
+
+       
+
+    //    firstclass-ticket-count
+        function ticketChange(isincrease) {
+            const countvalue = document.getElementById("ticketvalue");
+
+            const sitcount = parseInt(ticketvalue.value);
+
+            let sitnewcount = sitcount;
+
+            if (isincrease == true) {
+                sitnewcount = sitcount + 1;
+            }
+            if (isincrease == false && sitcount > 0) {
+                sitnewcount = sitcount - 1;
+            }
+            countvalue.value = sitnewcount;
+
+            const totalsitPrice = sitnewcount * 150;
+            document.getElementById("total").innerText = '$' + totalsitPrice;
+            calculateTotal();
+
+        }
+        // normal ticket count
+        function valueChange(isincrease) {
+
+            const casevalue = document.getElementById("inputvalue");
+            const ticketcount = parseInt(inputvalue.value);
+            let newticketcount = ticketcount;
+            if (isincrease == true) {
+                newticketcount = ticketcount + 1;
+            }
+            if (isincrease == false && ticketcount > 0) {
+                newticketcount = ticketcount - 1;
+            }
+            inputvalue.value = newticketcount;
+            const totalticketprice = newticketcount * 100;
+            document.getElementById("total").innerText = "$" + totalticketprice;
+            calculateTotal();
+
+        }
+
+
+       
+        // total calculation
+        function calculateTotal() {
+            const ticketinput = document.getElementById("ticketvalue");
+            const ticketCountTotal = parseInt(ticketinput.value);
+
+            const ticketnumber = document.getElementById("inputvalue");
+            const ticketnumbertotal = parseInt(ticketnumber.value);
+
+            const totalPrice = (ticketCountTotal * 150) + (ticketnumbertotal * 100);
+            document.getElementById("total").innerText = "$" + totalPrice;
+
+            const vat = Math.round(totalPrice * 0.1);
+            document.getElementById("vat").innerText = "$" + vat;
+
+            const grandtotal = totalPrice + vat;
+            document.getElementById("grand-total").innerText = "$" + grandtotal;
+        }
+
+        // for bonus part
+        function totalReview() {
+
+            const ticketinput = document.getElementById("ticketvalue");
+            const ticketCountTotal = parseInt(ticketinput.value);
+
+            const ticketnumber = document.getElementById("inputvalue");
+            const ticketnumbertotal = parseInt(ticketnumber.value);
+
+            const totalPrice = (ticketCountTotal * 150) + (ticketnumbertotal * 100);
+            document.getElementById("total-cast").innerText = "$" + totalPrice;
+
+            const vat = Math.round(totalPrice * 0.1);
+            document.getElementById("vat-review").innerText = "$" + vat;
+
+            const totalreview = totalPrice + vat;
+            document.getElementById("total-review").innerText = "$" + totalreview;
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
